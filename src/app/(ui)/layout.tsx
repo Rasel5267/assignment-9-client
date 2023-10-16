@@ -2,18 +2,16 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Footer from "@/components/common/ui/Footer";
 import Navbar from "@/components/common/ui/Navbar";
 
-const HomePage = () => {
+const UiLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
-		<>
+		<div>
 			<Navbar />
 			<MaxWidthWrapper>
-				<main>
-					<h2 className="text-blue-700">Home Page</h2>
-				</main>
+				<main>{children}</main>
 			</MaxWidthWrapper>
 			<Footer />
-		</>
+		</div>
 	);
 };
 
-export default HomePage;
+export default UiLayout;
