@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import CartPage from "./CartPage";
 import { Search, UserSquare2 } from "lucide-react";
 import { isLoggedIn, removeUserInfo } from "@/services/auth.service";
@@ -14,6 +14,7 @@ import {
 } from "../ui/dropdown-menu";
 
 const NavbarItem = () => {
+	const router = useRouter();
 	const searchParams = useSearchParams();
 	const search = searchParams.get("searchTerm");
 
@@ -57,7 +58,11 @@ const NavbarItem = () => {
 								<Link href="/profile">Dashboard</Link>
 								<span
 									className="cursor-pointer"
-									onClick={() => removeUserInfo(authKey)}
+									onClick={() => {
+										removeUserInfo(authKey);
+										router.push("/");
+										window.location.reload();
+									}}
 								>
 									Logout
 								</span>

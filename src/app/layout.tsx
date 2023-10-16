@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Providers from "@/constants/Providers";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
 	title: "VentureVista - Embark on Unforgettable Adventures and Discover New Horizons",
@@ -27,6 +28,7 @@ export default function RootLayout({
 					)}
 				>
 					{children}
+					<Toaster />
 				</body>
 			</html>
 		</Providers>
