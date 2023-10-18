@@ -28,7 +28,7 @@ const VVCard = ({ whyUs }: any) => {
 										/>
 									</div>
 								</div>
-								<h3 className="text-center text-lg font-bold text-gray-700 mt-4 mb-2">
+								<h3 className="text-center text-lg font-bold text-gray-700 mt-4 mb-6">
 									{item.title}
 								</h3>
 							</div>

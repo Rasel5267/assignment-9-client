@@ -1,9 +1,11 @@
 type StarType = {
 	star: number;
 	reviews?: number;
+	style: string;
+	parent: string;
 };
 
-const Star = ({ star, reviews }: StarType) => {
+const Star = ({ star, reviews, style, parent }: StarType) => {
 	const ratingStar = Array.from({ length: 5 }, (elem, index) => {
 		let number = index + 0.5;
 
@@ -41,12 +43,10 @@ const Star = ({ star, reviews }: StarType) => {
 		);
 	});
 	return (
-		<>
-			<div className="flex items-center justify-center space-x-1 text-[#ffab01] mb-8">
-				{ratingStar}
-			</div>
+		<div className={parent}>
+			<div className={style}>{ratingStar}</div>
 			{reviews && <p>({reviews} customer reviews)</p>}
-		</>
+		</div>
 	);
 };
 

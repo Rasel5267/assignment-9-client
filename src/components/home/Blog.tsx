@@ -10,7 +10,12 @@ import { useBlogsQuery } from "@/redux/api/blogApi";
 const Blog = () => {
 	const query: Record<string, any> = {};
 	const { data, isLoading }: any = useBlogsQuery(query);
-	const blogs = data?.slice(0, 4);
+	let blogs;
+
+	if (data !== undefined) {
+		blogs = data.blogs;
+	}
+	const blog = blogs?.slice(0, 4);
 
 	const truncateDescription = (description: string, wordLimit: number) => {
 		const words = description.split(" ");
@@ -35,9 +40,9 @@ const Blog = () => {
 						<Spin />
 					</div>
 				) : (
-					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-						{blogs &&
-							blogs.map((item: any) => (
+					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+						{blog &&
+							blog.map((item: any) => (
 								<div key={item.id}>
 									<Card>
 										<CardContent className="p-0">

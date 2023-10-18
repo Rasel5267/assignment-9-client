@@ -9,7 +9,6 @@ const Review = () => {
 	const query: Record<string, any> = {};
 	const { data, isLoading }: any = useReviewsQuery(query);
 	const reviews = data?.slice(0, 3);
-	console.log(reviews);
 	return (
 		<div className="py-20">
 			<MaxWidthWrapper>
@@ -33,7 +32,11 @@ const Review = () => {
 									<Card>
 										<CardContent className="p-0">
 											<div className="p-8">
-												<Star star={item.rating} />
+												<Star
+													star={item.rating}
+													style="flex items-center justify-center space-x-1 text-[#ffab01] mb-8"
+													parent="flex items-center justify-center"
+												/>
 												<p>{item.comment}</p>
 												<h2 className="text-2xl text-center font-bold mt-4 mb-1">
 													{item.customer.name}

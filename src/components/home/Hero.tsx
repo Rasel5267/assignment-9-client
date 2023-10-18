@@ -16,9 +16,11 @@ const Hero = () => {
 				width={500}
 				height={400}
 			/>
-			<div className="absolute text-white bottom-48">
+			<div className="absolute text-white bottom-16 sm:bottom-36 md:bottom-48 lg:bottom-60">
 				<MaxWidthWrapper>
-					<h2 className="text-5xl font-bold">Explore Your Travel</h2>
+					<h2 className="text-2xl sm:text-5xl font-bold">
+						Explore Your Travel
+					</h2>
 					<h4 className="mt-2">
 						Discover your next great adventure, become an explorer
 						to get started!

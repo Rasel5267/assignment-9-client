@@ -9,6 +9,7 @@ import Hero from "@/components/home/Hero";
 import Destination from "@/components/home/Destination";
 import Blog from "@/components/home/Blog";
 import Review from "@/components/home/Review";
+import Faq from "@/components/home/Faq";
 
 const HomePage: NextPageWithLayout = () => {
 	return (
@@ -30,6 +31,7 @@ const HomePage: NextPageWithLayout = () => {
 			<Destination />
 			<Blog />
 			<Review />
+			<Faq />
 		</>
 	);
 };

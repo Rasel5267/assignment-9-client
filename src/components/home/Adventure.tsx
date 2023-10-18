@@ -11,7 +11,7 @@ import Spin from "../common/Spin";
 const Adventure = () => {
 	const query: Record<string, any> = {};
 	const { data, isLoading }: any = useTourPackagesQuery(query);
-	const tourPackages = data?.slice(0, 4);
+	const tourPackages = data?.tourPackages.slice(0, 4);
 
 	return (
 		<div className="py-20 bg-[#f5f6f6]">
@@ -29,7 +29,7 @@ const Adventure = () => {
 						<Spin />
 					</div>
 				) : (
-					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 						{tourPackages &&
 							tourPackages.map((item: any) => (
 								<div key={item.id}>

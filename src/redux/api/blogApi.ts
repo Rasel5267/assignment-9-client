@@ -1,3 +1,4 @@
+import { IMeta } from "@/types";
 import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 
@@ -11,6 +12,12 @@ export const blogApi = baseApi.injectEndpoints({
 				method: "GET",
 				params: arg,
 			}),
+			transformResponse: (response: any, meta: IMeta) => {
+				return {
+					blogs: response,
+					meta,
+				};
+			},
 			providesTags: [tagTypes.blog],
 		}),
 		blog: build.query({

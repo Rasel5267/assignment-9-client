@@ -1,6 +1,4 @@
-"use client";
-import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import CartPage from "./CartPage";
 import { Search, UserSquare2 } from "lucide-react";
 import { isLoggedIn, removeUserInfo } from "@/services/auth.service";
@@ -12,18 +10,18 @@ import {
 	DropdownMenuContent,
 	DropdownMenuTrigger,
 } from "../../../ui/dropdown-menu";
+import Router from "next/router";
+import { useState } from "react";
 
 const NavbarItem = () => {
 	const router = useRouter();
-	const searchParams = useSearchParams();
-	const search = searchParams.get("searchTerm");
+	const [searchQuery, setSearchQuery] = useState("");
 
-	const [value, setValue] = useState("");
-
-	const handleSubmit = (e: any) => {
-		e.preventDefault();
-		console.log("Submit", value);
-		console.log(search);
+	const handleSubmit = () => {
+		Router.push({
+			pathname: "/search",
+			query: { searchTerm: `${searchQuery}` },
+		});
 	};
 
 	return (
@@ -38,8 +36,8 @@ const NavbarItem = () => {
 							<input
 								type="text"
 								name="searchTerm"
-								placeholder="Search ..."
-								onChange={(e) => setValue(e.target.value)}
+								placeholder="Search destination..."
+								onChange={(e) => setSearchQuery(e.target.value)}
 								className="border border-gray-200 p-2 rounded-md outline-none"
 							/>
 						</form>

@@ -4,11 +4,16 @@ import { Card, CardContent } from "../ui/card";
 import { useDestinationsQuery } from "@/redux/api/destinationApi";
 import Link from "next/link";
 import Spin from "../common/Spin";
+import { buttonVariants } from "../ui/button";
 
 const Destination = () => {
 	const query: Record<string, any> = {};
 	const { data, isLoading }: any = useDestinationsQuery(query);
-	const destination = data?.slice(0, 4);
+	let destinations;
+	if (data !== undefined) {
+		destinations = data.destinations;
+	}
+	const destination = destinations?.slice(0, 4);
 	return (
 		<div className="py-20 bg-white">
 			<MaxWidthWrapper>
@@ -25,32 +30,32 @@ const Destination = () => {
 						<Spin />
 					</div>
 				) : (
-					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 						{destination &&
 							destination.map((item: any) => (
 								<div key={item.id}>
 									<Card>
-										<CardContent className="p-0 relative">
-											<div className="relative">
-												<Image
-													src="/card.jpeg"
-													alt={item.destinationName}
-													width={600}
-													height={600}
-													priority
-													style={{
-														borderRadius: "8px",
-														display: "block",
-													}}
-												/>
-												<div className="absolute top-0 left-0 w-full h-full bg-black/20"></div>
-											</div>
-											<div className="absolute bottom-5 left-4">
+										<CardContent className="p-0">
+											<Image
+												src="/blog.jpg"
+												alt={item.destinationName}
+												width={600}
+												height={600}
+												priority
+												style={{
+													borderRadius: "8px 8px 0 0",
+													display: "block",
+												}}
+											/>
+											<div className="p-4">
+												<h2 className="text-2xl font-bold mb-4">
+													{item.destinationName}
+												</h2>
 												<Link
 													href={`/destinations/${item.id}`}
-													className="text-2xl text-white font-bold"
+													className={buttonVariants()}
 												>
-													{item.destinationName}
+													See Details
 												</Link>
 											</div>
 										</CardContent>
