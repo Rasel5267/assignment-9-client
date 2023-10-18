@@ -1,6 +1,6 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import MenuItem from "@/components/navbar/MenuItem";
-import NavbarItem from "@/components/navbar/NavbarItem";
+import MenuItem from "@/components/common/ui/navbar/MenuItem";
+import NavbarItem from "@/components/common/ui/navbar/NavbarItem";
 import Link from "next/link";
 
 const Navbar = () => {
